@@ -17,6 +17,7 @@ Bundler.require(*Rails.groups)
 
 module BundleApi
   class Application < Rails::Application
+    
     config.api_only = true
     config.load_defaults 6.0
     config.generators do |generate|
@@ -26,6 +27,17 @@ module BundleApi
       generate.helper_specs false
       generate.routing_specs false
       generate.controller_specs false
+    end
+    
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', 
+          headers: :any, 
+          methods: %i[get post put delete],
+          expose: %w(access-token expiry token-type uid client),
+          max_age: 0
+      end
     end
   end
 end

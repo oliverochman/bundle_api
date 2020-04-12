@@ -9,7 +9,6 @@ RSpec.describe 'GET /events', type: :request do
     it 'should return a 200 response' do 
       expect(response.status).to eq 200
     end
-
   end
   
   describe 'GET, when there are no events' do

@@ -1,6 +1,6 @@
 RSpec.describe 'GET /events', type: :request do
   describe 'GET /events' do
-    let!(:event_1) { create(:event, title: "Celebrate easter with me!") }
+    let!(:event_1) { create(:event, title: "Celebrate easter with me!", description: "Kevin is not allowed to come. Complete buzzkill") }
 
     before do
       get '/events'
@@ -12,11 +12,13 @@ RSpec.describe 'GET /events', type: :request do
 
   end
   
-#   describe 'GET, No events been found' do
-#     before do
-#       get '/api/events'
-#     end
-#     it 'No events been found' do
-#     end
-#   end
+  describe 'GET, when there are no events' do
+    before do
+      get '/events'
+    end
+
+    it 'has no events' do
+      expect(response.status).to eq 404
+    end
+  end
 end

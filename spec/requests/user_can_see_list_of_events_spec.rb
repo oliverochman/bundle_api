@@ -1,6 +1,6 @@
 RSpec.describe 'GET /events', type: :request do
   describe 'GET /events' do
-    let!(:event_1) { create(:event, title: "Celebrate easter with me!", description: "Kevin is not allowed to come. Complete buzzkill") }
+    let!(:event) { create(:event, title: "Celebrate easter with me!", description: "Kevin is not allowed to come. Complete buzzkill") }
 
     before do
       get '/events'

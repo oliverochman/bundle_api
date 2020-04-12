@@ -20,5 +20,9 @@ RSpec.describe 'GET /events', type: :request do
     it 'has no events' do
       expect(response.status).to eq 404
     end
+
+    it 'displays error message' do
+      expect(JSON.parse(response.body)['message']).to eq 'No events present'
+    end
   end
 end

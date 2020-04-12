@@ -6,14 +6,18 @@ RSpec.describe 'GET /api/events', type: :request do
       get '/api/events'
       binding.pry
     end
+    
     it 'should return a 200 response' do 
+    
     end
+
   end
-  describe 'GET, No events been found' do
-    before do
-      get '/api/events'
-    end
-    it 'No events been found' do
-    end
-  end
+  
+#   describe 'GET, No events been found' do
+#     before do
+#       get '/api/events'
+#     end
+#     it 'No events been found' do
+#     end
+#   end
 end

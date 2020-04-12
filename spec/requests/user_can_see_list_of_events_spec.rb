@@ -4,6 +4,7 @@ RSpec.describe 'GET /api/events', type: :request do
 
     before do
       get '/api/events'
+      binding.pry
     end
     it 'should return a 200 response' do 
     end

@@ -24,8 +24,7 @@ RSpec.describe 'GET /events', type: :request do
     end
     
     it 'finds correct event category' do
-      binding.pry
-      expent(event.category).to eq 'Casual'
+      expect(event.category).to eq 'Casual'
     end
   end
   

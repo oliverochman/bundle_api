@@ -4,6 +4,7 @@ RSpec.describe 'GET /events', type: :request do
       :event,
         title: "Celebrate easter with me!",
         description: "Kevin is not allowed to come. Complete buzzkill",
+        category: "Casual"
       )}
 
     before do
@@ -20,6 +21,11 @@ RSpec.describe 'GET /events', type: :request do
 
     it 'finds correct event description' do
       expect(event.description).to eq 'Kevin is not allowed to come. Complete buzzkill'
+    end
+    
+    it 'finds correct event category' do
+      binding.pry
+      expent(event.category).to eq 'Casual'
     end
   end
   

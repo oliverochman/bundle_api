@@ -18,7 +18,6 @@ RSpec.describe 'POST /events', type: :request do
     it 'displays success message' do
       expect(JSON.parse(response.body)['message']).to eq 'Event was successfully created!'
     end
-
   end
   
   describe 'Sad Path, Event can not be created' do
@@ -30,7 +29,6 @@ RSpec.describe 'POST /events', type: :request do
           description: "I dont want anyone to join this event"
         }
       }
-
     end
 
     it 'event is missing an attribute' do

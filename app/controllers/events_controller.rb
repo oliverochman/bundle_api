@@ -16,7 +16,6 @@ class EventsController < ApplicationController
     else
       render json: { message: 'Event was NOT created.' }, status: 422
     end
-
   end
 
   private

@@ -7,4 +7,20 @@ class EventsController < ApplicationController
       render json: collection_events, status: 200
    end
   end
+
+  def create
+    event = Event.create(event_params)
+
+    if event.persisted?
+      render json: { message: 'Event was successfully created!' }, status: 200
+    else
+      render json: { message: 'Event was NOT created.' }, status: 422
+    end
+  end
+
+  private
+
+  def event_params
+    params.require(:event).permit(:title, :description)
+  end
 end

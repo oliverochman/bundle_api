@@ -14,7 +14,7 @@ class EventsController < ApplicationController
     if event.persisted?
       render json: { message: 'Event was successfully created!' }, status: 200
     else
-      render json: { message: 'Event was NOT created.' }
+      render json: { message: 'Event was NOT created.' }, status: 422
     end
 
   end

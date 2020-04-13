@@ -34,7 +34,7 @@ RSpec.describe 'POST /events', type: :request do
     end
 
     it 'event is missing an attribute' do
-      expect(response.status).to eq 404
+      expect(response.status).to eq 422
     end
 
     it 'displays error message' do

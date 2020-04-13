@@ -1,6 +1,10 @@
 RSpec.describe 'GET /events', type: :request do
   describe 'GET /events' do
-    let!(:event) { create(:event, title: "Celebrate easter with me!", description: "Kevin is not allowed to come. Complete buzzkill") }
+    let!(:event) { create(
+      :event,
+        title: "Celebrate easter with me!",
+        description: "Kevin is not allowed to come. Complete buzzkill",
+      )}
 
     before do
       get '/events'
@@ -8,6 +12,14 @@ RSpec.describe 'GET /events', type: :request do
     
     it 'should return a 200 response' do 
       expect(response.status).to eq 200
+    end
+
+    it 'finds correct event title' do
+      expect(event.title).to eq 'Celebrate easter with me!'
+    end
+
+    it 'finds correct event description' do
+      expect(event.description).to eq 'Kevin is not allowed to come. Complete buzzkill'
     end
   end
   

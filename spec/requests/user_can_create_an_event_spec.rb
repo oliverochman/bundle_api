@@ -14,19 +14,31 @@ RSpec.describe 'POST /events', type: :request do
     it 'should return a 200 response' do 
       expect(response.status).to eq 200
     end
-  end
-  
-  describe 'POST, when there are no events' do
-    before do
-      get '/events'
+
+    it 'displays success message' do
+      expect(JSON.parse(response.body)['message']).to eq 'Event was successfully created!'
     end
 
-    it 'has no events' do
+  end
+  
+  describe 'Sad Path, Event can not be created' do
+    before do
+      post '/events',
+      params: {
+        event: {
+          title: "",
+          description: "I dont want anyone to join this event"
+        }
+      }
+
+    end
+
+    it 'event is missing an attribute' do
       expect(response.status).to eq 404
     end
 
     it 'displays error message' do
-      expect(JSON.parse(response.body)['message']).to eq 'No events present'
+      expect(JSON.parse(response.body)['message']).to eq 'Event was NOT created.'
     end
   end
 end

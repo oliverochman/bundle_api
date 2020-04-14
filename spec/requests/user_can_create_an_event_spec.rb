@@ -5,9 +5,9 @@ RSpec.describe 'POST /events', type: :request do
       post '/events',
         params: {
           event: {
-            title: "I Just Created This",
-            description: "I dont want anyone to join this event",
-            category: "Casual"
+            title: 'I Just Created This',
+            description: 'I dont want anyone to join this event',
+            category: 'casual'
           }
         }
     end
@@ -26,9 +26,9 @@ RSpec.describe 'POST /events', type: :request do
       post '/events',
       params: {
         event: {
-          title: "",
-          description: "I dont want anyone to join this event",
-          category: "Casual"
+          title: '',
+          description: 'I dont want anyone to join this event',
+          category: 'casual'
         }
       }
     end

@@ -2,9 +2,9 @@ RSpec.describe 'GET /events', type: :request do
   describe 'GET /events' do
     let!(:event) { create(
       :event,
-        title: "Celebrate easter with me!",
-        description: "Kevin is not allowed to come. Complete buzzkill",
-        category: "Casual"
+        title: 'Celebrate easter with me!',
+        description: 'Kevin is not allowed to come. Complete buzzkill',
+        category: 'casual'
       )}
 
     before do
@@ -22,10 +22,11 @@ RSpec.describe 'GET /events', type: :request do
     it 'finds correct event description' do
       expect(event.description).to eq 'Kevin is not allowed to come. Complete buzzkill'
     end
-    
+    binding.pry
     it 'finds correct event category' do
-      expect(event.category).to eq 'Casual'
+      expect(event.category).to eq 'casual'
     end
+    
   end
   
   describe 'GET, when there are no events' do

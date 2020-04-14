@@ -14,7 +14,7 @@ RSpec.describe 'GET /events', type: :request do
     it 'should return a 200 response' do 
       expect(response.status).to eq 200
     end
-
+    
     it 'finds correct event title' do
       expect(event.title).to eq 'Celebrate easter with me!'
     end
@@ -22,7 +22,6 @@ RSpec.describe 'GET /events', type: :request do
     it 'finds correct event description' do
       expect(event.description).to eq 'Kevin is not allowed to come. Complete buzzkill'
     end
-    binding.pry
     it 'finds correct event category' do
       expect(event.category).to eq 'casual'
     end

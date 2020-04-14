@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :event do
     title { 'MyString' }
     description { 'MyString' }
-    category { 'casual' }
+    category { 4 }
   end
 end

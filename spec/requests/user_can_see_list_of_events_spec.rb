@@ -1,29 +1,31 @@
 RSpec.describe 'GET /events', type: :request do
   describe 'GET /events' do
-    let!(:event) { create(
-      :event,
+    before do
+      @event = FactoryBot.create(:event,
         title: 'Celebrate easter with me!',
         description: 'Kevin is not allowed to come. Complete buzzkill',
-        category: 'casual'
-      )}
-
-    before do
+        category: 'casual')
       get '/events'
     end
-    
-    it 'should return a 200 response' do 
+
+    it 'should return a valid event response' do
       expect(response.status).to eq 200
+      binding.pry
+      expect(response_json['id']).to eq @event.id
+      expect(response_json['title']).to eq @event.title
+      expect(response_json['description']).to eq @event.description
+      expect(response_json['category']).to eq @event.category
     end
-    
+
     it 'finds correct event title' do
-      expect(event.title).to eq 'Celebrate easter with me!'
+      expect(@event.title).to eq 'Celebrate easter with me!'
     end
 
     it 'finds correct event description' do
-      expect(event.description).to eq 'Kevin is not allowed to come. Complete buzzkill'
+      expect(@event.description).to eq 'Kevin is not allowed to come. Complete buzzkill'
     end
     it 'finds correct event category' do
-      expect(event.category).to eq 'casual'
+      expect(@event.category).to eq 'casual'
     end
     
   end

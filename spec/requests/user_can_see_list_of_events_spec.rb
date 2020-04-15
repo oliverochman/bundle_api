@@ -10,11 +10,10 @@ RSpec.describe 'GET /events', type: :request do
 
     it 'should return a valid event response' do
       expect(response.status).to eq 200
-      binding.pry
-      expect(response_json['id']).to eq @event.id
-      expect(response_json['title']).to eq @event.title
-      expect(response_json['description']).to eq @event.description
-      expect(response_json['category']).to eq @event.category
+      expect(JSON.parse(@event.to_json)['id']).to eq @event.id
+      expect(JSON.parse(@event.to_json)['title']).to eq @event.title
+      expect(JSON.parse(@event.to_json)['description']).to eq @event.description
+      expect(JSON.parse(@event.to_json)['category']).to eq @event.category
     end
 
     it 'finds correct event title' do

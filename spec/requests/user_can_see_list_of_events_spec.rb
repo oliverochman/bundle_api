@@ -14,19 +14,7 @@ RSpec.describe 'GET /events', type: :request do
       expect(JSON.parse(@event.to_json)['title']).to eq @event.title
       expect(JSON.parse(@event.to_json)['description']).to eq @event.description
       expect(JSON.parse(@event.to_json)['category']).to eq @event.category
-    end
-
-    it 'finds correct event title' do
-      expect(@event.title).to eq 'Celebrate easter with me!'
-    end
-
-    it 'finds correct event description' do
-      expect(@event.description).to eq 'Kevin is not allowed to come. Complete buzzkill'
-    end
-    it 'finds correct event category' do
-      expect(@event.category).to eq 'casual'
-    end
-    
+    end    
   end
   
   describe 'GET, when there are no events' do

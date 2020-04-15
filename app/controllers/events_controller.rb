@@ -4,7 +4,7 @@ class EventsController < ApplicationController
     if collection_events.empty?
       render json: { message: 'No events present' }, status: 404
     else
-      render json: collection_events, status: 200
+      render json: {events: collection_events}, status: 200
    end
   end
 

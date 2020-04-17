@@ -1,15 +1,20 @@
 RSpec.describe 'POST /events', type: :request do
+  let(:user) { create(:user) }
+  let(:user_credentials) { user.create_new_auth_token }
+  let(:user_headers) { { HTTP_ACCEPT: "application/json" }.merge!(user_credentials) }
+
   describe 'POST /events' do
 
     before do
-      post '/events',
+      post '/api/events',
         params: {
           event: {
             title: 'I Just Created This',
             description: 'I dont want anyone to join this event',
             category: 'casual'
           }
-        }
+        },
+        headers: user_headers
     end
     
     it 'should return a 200 response' do 
@@ -23,14 +28,15 @@ RSpec.describe 'POST /events', type: :request do
   
   describe 'Sad Path, Event can not be created' do
     before do
-      post '/events',
+      post '/api/events',
       params: {
         event: {
           title: '',
           description: 'I dont want anyone to join this event',
           category: 'casual'
         }
-      }
+      },
+      headers: user_headers
     end
 
     it 'event is missing an attribute' do
